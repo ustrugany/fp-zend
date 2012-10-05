@@ -1,0 +1,9 @@
+<label class="required" for="city">Miasto</label>
+<select name="city">
+    <?php $currentValue = isset($_POST['city']) ? $_POST['city'] : null; ?>
+    <?php foreach($this->cities as $city): ?>
+        <?php $selected = ($city == $currentValue) ? true : false; ?>
+        <option <?php echo $selected ? 'selected="selected"' : ''; ?>><?php echo $city; ?></option>
+    <?php endforeach; ?>
+</select>
+<input type="submit" class="button-grey" value="Odśwież">

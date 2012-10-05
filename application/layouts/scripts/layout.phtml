@@ -6,25 +6,36 @@
         <?php echo $this->headMeta(); ?>
         <?php echo $this->headLink(); ?>
         <?php echo $this->headScript(); ?>
+        <script type="text/javascript">
+            var baseURL = "<?php echo $this->baseUrl(); ?>"
+        </script>
     </head>
     <body>
-        <div id="main-container">
-            <a href="<?php echo $this->url(array(), 'default'); ?>" id="logo">
-            </a>
-            <div id="navigation" class="m-padding">
-                <a href="<?php echo $this->url(array(
-                        'controller' => 'order',
-                        'action' => 'create'
-                    ), 'order_create'); ?>">Nowe zamówienie</a>
-                <span class="navigation-separator">/</span>
-                <a href="<?php echo $this->url(array(
-                        'controller' => 'order',
-                        'action' => 'list'
-                    ), 'order_list'); ?>">Wszystkie zamówienia</a>
-            </div>
-            <h3><?php echo $this->title; ?></h3>
+        <section id="wrapper">
+            <header id="header">
+                <div class="top">
+                     <!-- block navigation -->
+                        <nav>
+                            <ul class="navigation">
+                                <li><a href="<?php echo $this->url(array(), 'home'); ?>">Home</a></li>
+                                <li><a href="<?php echo $this->url(array(), 'admin_index'); ?>">Admin</a></li>
+                            </ul>
+                        </nav>
+                    <!-- endblock -->
+                </div>
+
+                <hgroup>
+                    <h2><a href="<?php echo $this->url(array(), 'home'); ?>">Weather Info</a></h2>
+                    <h3><a href="#">Aplikacja testowa</a></h3>
+                </hgroup>
+            </header>
+            
             <?php echo $this->layout()->content; ?>
-        </div>
+            
+            <div id="footer">
+                <?php echo $this->layout()->footer; ?>
+            </div>
+        </section>
     </body>
 </html>
 

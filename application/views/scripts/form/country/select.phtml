@@ -1,0 +1,8 @@
+<label class="required" for="country">Kraj</label>
+<select name="country">
+    <?php $currentValue = isset($_POST['country']) ? $_POST['country'] : 'Poland'; ?>
+    <?php foreach($this->countries as $country): ?>
+        <?php $selected = ($country == $currentValue) ? true : false; ?>
+        <option <?php echo $selected ? 'selected="selected"' : ''; ?>><?php echo $country; ?></option>
+    <?php endforeach; ?>
+</select>

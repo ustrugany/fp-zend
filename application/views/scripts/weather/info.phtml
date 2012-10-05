@@ -1,0 +1,11 @@
+<div class="weather-info">
+    <ul>
+        <?php 
+            $index = 0;
+            $count = count($this->weather);
+        ?>
+        <?php foreach($this->weather as $key => $information): ?>
+            <li class="<?php echo $this->loopIndexClass($index++, $count); ?>" ><span class="key"><?php echo $key; ?></span><span class="value"><?php echo $information; ?></span></li>
+        <?php endforeach; ?>
+    </ul>
+</div>

@@ -267,3 +267,42 @@ a.sort-desc{
 .text_center{
     text-align: center;
 }
+
+#country-city-form select, 
+#country-city-form input{
+    display: block;
+}
+
+#country-city-form{
+    padding: 10px;
+}
+#country-city-form select{
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+}
+#country-city-form input.button-grey{
+    margin: 5px;
+    width: 200px;
+    padding: 10px;
+}
+
+
+.weather-info li.odd.first{
+    background-color: black;
+    color: #F48A00;
+    display: block;
+    font-size: 18px;
+}
+
+.weather-info li.odd{
+    background-color: silver;
+}
+
+.weather-info span{
+    padding: 5px;
+    display: inline-block;
+}
+.weather-info .key{
+    font-weight: bold;
+}

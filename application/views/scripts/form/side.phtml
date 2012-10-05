@@ -1,0 +1,34 @@
+<form id="country-city-form" action="<?php echo $this->url(array(), 'home'); ?>" method="POST">
+    <?php if(!empty($this->countries)): ?>
+        <?php echo $this->partial('form/country/select.phtml', array('countries' => $this->countries)); ?>
+    <?php endif; ?>
+    <?php if(!empty($this->cities)): ?>
+        <?php echo $this->partial('form/city/select.phtml', array('cities' => $this->cities)); ?>
+    <?php endif; ?>
+</form>
+<script type="text/javascript"> 
+    $(document).ready(function() { 
+        var blockAndUnclock = function(){
+            setTimeout(function(){ $('aside.sidebar').unblock(); }, 3000);
+            $('aside.sidebar').block({ 
+                message: '<span class="busy">Przetwarzanie...</span>', 
+                css: { 
+                     width: '80%', 
+                    'font-size': '18px',
+                    border: 'none', 
+                    padding: '5px', 
+                    backgroundColor: '#000', 
+                    '-webkit-border-radius': '10px', 
+                    '-moz-border-radius': '10px', 
+                    opacity: .6, 
+                    color: '#fff' 
+                } 
+            });
+        };
+        $('select[name=country]').change(application.onCountrySelectChange); 
+        $('input[type=submit]').click(function(){
+            blockAndUnclock();
+            return false;
+        });
+    }); 
+</script> 

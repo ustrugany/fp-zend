@@ -40,7 +40,6 @@ class My_Application_Resource_Page extends Zend_Application_Resource_ResourceAbs
         $request = new Zend_Controller_Request_Http;
         $front->setRequest($request);
         $baseUrl = $request->getBaseUrl();
-        
         $view->headTitle()
                 ->setDefaultAttachOrder($page->getTitleDefaultAttachOrder())
                 ->setSeparator($page->getTitleSeparator())
