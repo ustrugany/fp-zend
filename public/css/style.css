@@ -1,0 +1,269 @@
+/* 
+    Document   : style
+    Created on : 2012-08-24, 15:31:37
+    Author     : piter
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+a{
+    color: #ff0000;
+    text-decoration: none;
+}
+
+a.hover{
+    color: darkred;
+    text-decoration: underline;
+}
+
+.s-padding{
+   padding: 5px; 
+}
+.m-padding{
+   padding: 15px; 
+}
+.b-padding{
+   padding: 25px; 
+}
+
+root { 
+    display: block;
+}
+
+body{
+    background-color: whitesmoke;
+    font-family: Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+#main-container{
+    width: 1024px;
+    margin: 0 auto;
+}
+
+#view-content{
+    padding: 15px; 
+    border: 2px solid #dedede;
+}
+
+#logo{
+    background: url('../images/logo_babybuu_small.jpg') no-repeat center center;
+    width: 100%;
+    height: 100px;
+/*    background-color: #dedede;*/
+    background-color: #fff;
+    display: block;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+}
+
+#navigation{
+    border: 2px solid #dedede;
+    color: tomato;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+table td, table th{
+    text-align: center;
+    padding: 3px 7px;
+}
+
+table td{
+    border-bottom: 1px solid #cccccc;
+}
+table th{
+    background-color: #dedede;
+    font-size: 80%;
+}
+
+.order-row .date_of_payment{
+    font-weight: bold;
+}
+.order-row .date_of_receipt{
+    width: 10%;
+}
+
+.order-row .unique,
+.order-row .color,
+.order-row .model,
+.order-row .is_seat,
+.order-row .date_of_payment,
+.order-row .frame,
+.order-row .action-column,
+.order-row .wheels,
+.order-row .order{
+    width: 3%;
+}
+
+.order-row .empty-cell{
+    color: red;
+}
+
+.order-row.urgency-high{
+    background-color: #ff9999;
+}
+.order-row.urgency-medium{
+    background-color: #ffcc99;
+}
+
+#legend .urgency-high,
+#legend .urgency-medium{
+    display: block;
+    height: 20px; 
+    width: 20px;
+    float: left;
+    color: #ffcc99;
+}
+
+#legend .urgency-medium{
+    background-color: #ffcc99;
+}
+#legend .urgency-high{
+    background-color: #ff9999;
+}
+
+.fieldsets-wrapper{
+    clear: right;
+    margin-bottom: 15px;
+}
+fieldset.grid-elements{
+    width: 250px;
+    float: left;
+    border: 2px solid #DEDEDE;
+}
+
+.order-row{
+    font-size: 75%;
+}
+
+.order-row .days-left,
+.order-row .bonus,
+.order-row .unique
+.order-row .client{
+}
+
+td.action-column a{
+    color: #fff;
+    height: 100%;
+    padding: 5px 3px;
+    background-color: red;
+}
+td.action-column a.hover{
+    color: darkred;
+}
+a.column-action.update {
+    padding-left: 25px;
+    display: block;
+    width: 45px;
+    background: gray url('../images/edit.png') no-repeat 5px center;
+
+}
+a.column-action.delete {
+    display: block;
+    width: 45px;
+    padding-left: 25px;
+    background: gray url('../images/delete.png') no-repeat 5px center;
+}
+
+td.checkbox-column{
+    padding:0;
+}
+
+
+#year-selection{
+    background-color: #dedede;
+    width: 200px;
+    text-align: center;
+    font-weight: bold;
+}
+#year-selection dt{
+    padding: 5px;
+}
+
+#year-selection dd,
+#year-selection dt{
+    display: inline-block;
+    margin: 0;
+}
+
+
+#form-wrapper{
+    width: 600px;
+    padding: 15px;
+    background-color: #dedede;
+}
+
+.zend_form input{
+    width: 250px;
+}
+
+.zend_form dt,
+.zend_form dd{
+    display: block;
+}
+
+.zend_form dt{
+    margin: 0;
+    padding: 5px 0;
+}
+.zend_form dd{
+    margin: 0;
+}
+
+.zend_form label{
+}
+
+.zend_form #is_paid-element input,
+.zend_form #is_seat-element input{
+    width: auto;
+}
+
+.action-message{
+}
+.action-message .success{
+    background-color: red;
+    padding: 5px;
+    color: #fff;
+}
+
+.pagination{
+    padding: 5px;
+    border: 1px solid #ccc;
+    background-color: #dedede;
+}
+
+.clearfix{
+    clear: both;
+}
+
+a.sort-desc,
+a.sort-asc
+{
+    padding-right: 16px;
+}
+
+a.sort-asc{
+    background: url('../images/order_asc.png') no-repeat right center;
+}
+
+a.sort-desc{
+    background: url('../images/order_desc.png') no-repeat right center;
+}
+
+#dialog-delete .zend_form dl{
+}
+
+#dialog-delete .zend_form dt,
+#dialog-delete .zend_form dd{
+    display: inline-block;
+}
+
+.text_left{
+    text-align: left;
+}
+
+.text_center{
+    text-align: center;
+}

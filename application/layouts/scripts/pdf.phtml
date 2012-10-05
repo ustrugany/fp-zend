@@ -1,0 +1,24 @@
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<?php echo $this->doctype(); ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+    <head>
+        <?php echo $this->headTitle($this->title); ?>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+    </head>
+    <body>
+        <div id="main-container">
+            <a href="<?php echo $this->url(array(), 'default'); ?>" id="logo">
+<!--                <h1>El-Jot &reg; - Logo</h1>-->
+            </a>
+            <?php echo $this->layout()->content; ?>
+        </div>
+    </body>
+</html>
+
+

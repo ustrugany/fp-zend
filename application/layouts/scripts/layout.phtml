@@ -1,0 +1,31 @@
+<?php echo $this->doctype(); ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="pl" lang="pl">
+    <head>
+        <?php echo $this->headTitle($this->title); ?>
+        <?php echo $this->headMeta(); ?>
+        <?php echo $this->headLink(); ?>
+        <?php echo $this->headScript(); ?>
+    </head>
+    <body>
+        <div id="main-container">
+            <a href="<?php echo $this->url(array(), 'default'); ?>" id="logo">
+            </a>
+            <div id="navigation" class="m-padding">
+                <a href="<?php echo $this->url(array(
+                        'controller' => 'order',
+                        'action' => 'create'
+                    ), 'order_create'); ?>">Nowe zamówienie</a>
+                <span class="navigation-separator">/</span>
+                <a href="<?php echo $this->url(array(
+                        'controller' => 'order',
+                        'action' => 'list'
+                    ), 'order_list'); ?>">Wszystkie zamówienia</a>
+            </div>
+            <h3><?php echo $this->title; ?></h3>
+            <?php echo $this->layout()->content; ?>
+        </div>
+    </body>
+</html>
+
+
