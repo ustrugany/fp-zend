@@ -34,6 +34,7 @@ class HomeController extends Zend_Controller_Action
 //                    ->initContext();
         $this->_contextSwitch
              ->addActionContext('get-cities', 'json')
+             ->addActionContext('get-city-weather', 'json')
                 ->setAutoJsonSerialization(false)
                     ->initContext();
                 
@@ -41,20 +42,22 @@ class HomeController extends Zend_Controller_Action
             $this->_helper->getHelper('FlashMessenger');
         
         $this->initView();
-        $this->writeSOAPConfig();
+//        $this->writeSOAPConfig(array());
         
         $this->_cache = Zend_Registry::get('cache');
         $this->_session = Zend_Registry::get('session');
     }
     
-    protected function writeSOAPConfig()
+    protected function writeSOAPConfig($options)
     {
+        //overwiret($default, $options);
+        $default = array(
+            'url' => 'http://www.webservicex.com/globalweather.asmx?WSDL',
+            'timeout' => 120
+        );
         $config = Zend_Registry::get('config');
         $configPath = Zend_Registry::get('configPath');
-        $config->production->SOAP = array(
-                'url' => 'http://www.webservicex.com/globalweather.asmx?WSDL',
-                'timeout' => 120
-        );
+        $config->production->SOAP = $default;
         $writer = new Zend_Config_Writer_Ini(array('config'   => $config, 'filename' => $configPath));
         $writer->write();
     }
@@ -62,18 +65,18 @@ class HomeController extends Zend_Controller_Action
     public function indexAction()
     {
         $this->fetchAndPassCountries();
-        $countryName = $this->getRequest()->get('country', null);
-        $cityName = $this->getRequest()->get('city', null);
-        if(!is_null($countryName)){
-            $cities = $this->getCitiesByCountryName($countryName);
-            $this->view->cities = $cities;
-            if(!is_null($cityName)){
-                $cityWeather = $this->getCityWeatherWithSOAP($cityName, $countryName);
-                $this->view->weather = $cityWeather;
-            }
-        } else {
-            $this->_flashMessenger->setNamespace('info')->addMessage('Wybierz kraj');
-        }
+//        $countryName = $this->getRequest()->get('country', null);
+//        $cityName = $this->getRequest()->get('city', null);
+//        if(!is_null($countryName)){
+//            $cities = $this->getCitiesByCountryName($countryName);
+//            $this->view->cities = $cities;
+//            if(!is_null($cityName)){
+//                $cityWeather = $this->getCityWeatherWithSOAP($cityName, $countryName);
+//                $this->view->weather = $cityWeather;
+//            }
+//        } else {
+//            $this->_flashMessenger->setNamespace('info')->addMessage('Wybierz kraj');
+//        }
 //        $this->getAPICities('Germany');
 //        $this->getAPIWeather('Berlin', 'Germany');
 //        $logger = Zend_Registry::get('logger');
@@ -82,19 +85,9 @@ class HomeController extends Zend_Controller_Action
 //        $logger->err('Testowy błąd loggera');
     }
     
-    public function testAction()
-    {
-    }
-    
     protected function getCountryCitiesCacheKey($countryName)
     {
         return "cached_cities_for_{$countryName}_country";
-    }
-
-    public function fetchAndPassCities()
-    {
-        $City = new Application_Model_DbTable_City;
-        $this->view->cities = $City->fetchAll();
     }
 
     public function fetchAndPassCountries()
@@ -117,8 +110,26 @@ class HomeController extends Zend_Controller_Action
         $countryName = $this->getRequest()->get('country');
         $this->_logger->info($countryName);
         $cities = $this->getCitiesByCountryName($countryName);
-        $this->_logger->info($cities);
-//        $this->view->cities = $cities;
+        if(is_null($cities)){
+            $this->view->success = false;
+        } else {
+            $this->_logger->info($cities);
+            $this->view->cities = $cities;
+        }
+    }
+    
+    public function getCityWeatherAction()
+    {
+        $countryName = $this->getRequest()->get('country');
+        $cityName = $this->getRequest()->get('city');
+        $this->_logger->info("getCityWeatherAction[{$countryName},{$cityName}");
+        $cityWeather = $this->getCityWeatherWithSOAP($cityName, $countryName);
+        if(is_null($cityWeather)){
+            $this->view->success = false;
+        } else {
+            $this->_logger->info($cityWeather);
+            $this->view->weather = $cityWeather;
+        }
     }
     
     protected function getCitiesByCountryName($countryName)
@@ -131,11 +142,11 @@ class HomeController extends Zend_Controller_Action
 //            if(($cached_cities = $this->_cache->load($this->getCountryCitiesCacheKey($countryName))) == false){
                 $cities = $country->getCities();
                 if($cities->count() == 0){
-                    $countryRow = $Country->replaceCountry($countryName);
+//                    $countryRow = $Country->replaceCountry($countryName);
                     $cities = $this->getCitiesByCountryWithSOAP($countryName);
                     if(!empty($cities)){
                         Zend_Registry::get('logger')->info('got cities by SOAP');
-                        $cities = $Country->createCountryCitiesFromArray($countryRow, $cities);
+                        $cities = $Country->createCountryCitiesFromArray($country, $cities);
                     }
                 }
                 else{

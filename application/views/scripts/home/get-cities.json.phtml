@@ -1,3 +1,5 @@
-{
-    "html": "<?php echo $this->partial('form/city/select.phtml', array('cities' => $this->cities)); ?>"
-}
+<?php if(!empty($this->cities)): ?>
+    <?php echo $this->partial('form/city/select.phtml', array('cities' => $this->cities)); ?>
+<?php else: ?>
+    <span class="message">Brak miast</span>
+<?php endif ;?>
