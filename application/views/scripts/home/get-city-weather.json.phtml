@@ -1,4 +1,4 @@
-<div class="weather">
+<?php /*<div class="weather">
     <?php if(!empty($this->weather)): ?>
         <?php if(is_string($this->weather)): ?>
             <?php echo $this->weather; ?>
@@ -7,3 +7,10 @@
         <?php endif; ?>
     <?php endif; ?>
 </div>
+ */ ?>
+<?php echo $this->weather; ?>
+<br />
+<span style="font-size: 12px; color: gray">
+    <?php echo $this->sourceInformation; ?>
+</span>
+

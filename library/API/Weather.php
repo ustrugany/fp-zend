@@ -10,7 +10,7 @@
  *
  * @author = "piter";
  */
-class My_WeatherAPI {
+class API_Weather {
     
     protected static $_wsdl_url;
     protected static $_client;
@@ -32,25 +32,37 @@ class My_WeatherAPI {
     
     public static function instance($options)
     {
-        if(is_null(self::$_self))
-        {
-           self::$_self = new My_WeatherAPI($options);
+        try{
+            if(is_null(self::$_self))
+            {
+                self::$_self = new API_Weather($options);
+            }
+            return self::$_self;
+        } catch (Exception $e) {
+            throw new API_Weather_Creation_Exception($e->getMessage());
         }
-        return self::$_self;
     }
     
     public function requestCitiesByCountry($countryName)
     {
-        $cities = self::$_client->GetCitiesByCountry(array('CountryName' => $countryName));
-        $result = self::_processSOAPCitiesResponse($cities);
-        return $result;
+        try {
+            $cities = self::$_client->GetCitiesByCountry(array('CountryName' => $countryName));
+            $result = self::_processSOAPCitiesResponse($cities);
+            return $result;
+        } catch (Exception $e){
+            throw new API_Weather_Request_Exception($e->getMessage());
+        }
     }
     
     public function requestCityWeather($cityName, $countryName)
     {
-        $weather = self::$_client->GetWeather(array('CityName' => $cityName, 'CountryName' => $countryName));
-        $result = self::_processSOAPWeatherResponse($weather);
-        return $result;
+        try {
+            $weather = self::$_client->GetWeather(array('CityName' => $cityName, 'CountryName' => $countryName));
+            $result = self::_processSOAPWeatherResponse($weather);
+            return $result;
+        } catch (Exception $e){
+            throw new API_Weather_Request_Exception($e->getMessage());
+        }
     }
     
     protected static function _processSOAPCitiesResponse($response)
@@ -84,7 +96,7 @@ class My_WeatherAPI {
             if($result != self::$_empty_result_message)
             {
                 $result = mb_convert_encoding($result, 'UTF-16', 'UTF-8');
-                $xml = simplexml_load_string($result);
+                $xml = new SimpleXMLElement($result);
                 $result = $xml->xpath('//CurrentWeather');
                 $result = (array) $result[0];
             }

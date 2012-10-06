@@ -18,17 +18,23 @@ class Application_Model_DbTable_City_Row extends Zend_Db_Table_Row {
     public function __toString()
     {
         $result = (string) $this->name;
-        $weathers = $this->findDependentRowset('Application_Model_DbTable_CityWeather');
-        if($weathers->count())
-        {
-            $result .= " pogoda: {$weathers->current()->value} ";
-        }
         return $result;
     }
     
     public function getCountry()
     {
         return $this->findParentRow('Application_Model_DbTable_Country');
+    }
+    
+    public function getCityWeathers()
+    {
+        $weathers = $this->findDependentRowset('Application_Model_DbTable_CityWeather');
+        return $weathers;
+    }
+    
+    public function getLastCityWeather()
+    {
+        return $this->getCityWeathers()->current();
     }
 }
 

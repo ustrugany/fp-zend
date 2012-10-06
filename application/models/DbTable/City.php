@@ -13,15 +13,16 @@ class Application_Model_DbTable_City extends Zend_Db_Table_Abstract
         )      
     );
     
-    public function getCityWeathers()
+    /**
+     * Wyszukuje kraj na podstawie nazwy
+     * @param type $countryName
+     * @return type 
+     */
+    public function findCityByName($cityName)
     {
-        $weathers = $this->findDependentRowset('Application_Model_DbTable_CityWeather');
-        return $weathers;
-    }
-    
-    public function getLastCityWeather()
-    {
-        return $this->getCityWeathers()->current();
+        $select = $this->select()->where('LOWER(name) = :name')->limit(1);
+        $select->bind(array('name' => $cityName));
+        return $this->fetchAll($select)->current();
     }
 }
 

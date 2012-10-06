@@ -12,10 +12,17 @@
 </form>
 <script type="text/javascript"> 
     $(document).ready(function() { 
+        
+        // Pierwszy raz po zaladowaniu strony
+        application.onCountrySelectSelect();
+        
+        $(document).on('click', '#country-city-form input[type=submit]', {}, application.onCityWeatherButtonClick);
+        $(document).on('change', '#country-city-form select[name=country]', {}, application.onCountrySelectSelect);
+        
+//        $(document).on('click', '#country-city-form select[name=country] option:selected', {}, application.onCountrySelectSelect);
 //        var $countrySelect = $('select[name=country]');
 //        var onSelectedOptionClick = $.proxy(application.onCountrySelectSelect, $countrySelect);
-        $('select[name=country] option:selected').live('click', application.onCountrySelectSelect); 
-        $('select[name=country]').change(application.onCountrySelectSelect);
-        $('input[type=submit]').live('click', application.onCityWeatherButtonClick);
+//        $('select[name=country] option:selected').on('click', application.onCountrySelectSelect); 
+//        $('input[type=submit]').on('click', application.onCityWeatherButtonClick);
     }); 
 </script> 
