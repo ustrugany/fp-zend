@@ -1,0 +1,12 @@
+<?php echo $this->partial('admin/navigation.phtml'); ?>
+<div id="view-content">
+    <div class="flash-messages">
+        <?php echo $this->partial('flashmessager.phtml'); ?>
+    </div>
+    <?php if(!empty($this->cities)): ?>
+        <?php echo $this->partial('city/grid.phtml', 
+                array(
+                        'cities' => $this->cities
+                )); ?>
+    <?php endif; ?>
+</div>

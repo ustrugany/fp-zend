@@ -1,4 +1,5 @@
 <div class="weather-info">
+    <?php if(is_array($this->weather)): ?>
     <ul>
         <?php 
             $index = 0;
@@ -8,4 +9,7 @@
             <li class="<?php echo $this->loopIndexClass($index++, $count); ?>" ><span class="key"><?php echo $key; ?></span><span class="value"><?php echo $information; ?></span></li>
         <?php endforeach; ?>
     </ul>
+    <?php elseif(is_string($this->weather)): ?>
+        <?php echo $this->weather; ?>
+    <?php endif; ?>
 </div>

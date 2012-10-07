@@ -1,0 +1,5 @@
+<div class="grid-row">
+    <div class="data"><?php echo $this->city; ?></div>
+    <div class="action-column"><a href="<?php echo $this->url(array('city_id' => $this->city->id), 'delete_city'); ?>">Usuń</a></div>
+    <div class="action-column"><a href="<?php echo $this->url(array('city_id' => $this->city->id), 'update_city'); ?>">Edytuj</a></div>
+</div>

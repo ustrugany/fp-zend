@@ -1,0 +1,18 @@
+<?php 
+    $auth = Zend_Auth::getInstance();;
+    $identity = $auth->getIdentity();
+?>
+<div id="logout-bar"> 
+    <?php if (!empty($identity)): ?>
+            <a href="<?php echo $this->url(array('controller' => 'admin', 'action' => 'logout')) ?>">wyloguj</a>
+    <?php endif; ?>
+</div>
+
+<div id="admin-naviation">
+    <nav>
+        <ul class="navigation">
+            <li><a href="<?php echo $this->url(array(), 'list_cities'); ?>">Lista miast</a></li>
+            <li><a href="<?php echo $this->url(array(), 'update_options'); ?>">Edycja opcji</a></li>
+        </ul>
+    </nav>
+</div>

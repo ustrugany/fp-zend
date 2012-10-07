@@ -24,5 +24,9 @@ class Application_Model_DbTable_City extends Zend_Db_Table_Abstract
         $select->bind(array('name' => $cityName));
         return $this->fetchAll($select)->current();
     }
+    
+    public function fetchAllOrderedByName()
+    {
+        return $this->fetchAll(null, 'name', 'ASC');
+    }
 }
-

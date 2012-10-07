@@ -1,0 +1,8 @@
+<div class="grid">
+    <?php $index = 0; $count = ($this->cities->count() - 1); ?>
+    <?php foreach($this->cities as $city): ?>
+        <div class="grid-row-wrapper <?php echo $this->loopIndexClass($index++, $count); ?>">
+            <?php echo $this->partial('city/grid/row.phtml', array('city' => $city)); ?>
+        </div>
+    <?php endforeach; ?>
+</div>

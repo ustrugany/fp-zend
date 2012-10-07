@@ -19,7 +19,9 @@ class Application_Model_DbTable_Country_Row extends Zend_Db_Table_Row {
     
     public function getCities()
     {
-        return $this->findDependentRowset('Application_Model_DbTable_City');
+        $select = $this->getTable()->select();
+        $select->order('name', 'ASC');
+        return $this->findDependentRowset('Application_Model_DbTable_City', null, $select);
     }
 }
 

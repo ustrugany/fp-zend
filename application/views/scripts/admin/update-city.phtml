@@ -1,0 +1,12 @@
+<?php echo $this->partial('admin/navigation.phtml'); ?>
+<div id="view-content">
+    <h2><?php echo $this->title; ?></h2>
+    <div class="flash-messages">
+        <?php echo $this->partial('flashmessager.phtml'); ?>
+    </div>
+    <div id="form-wrapper">
+        <h4 class="action-message"><?php echo $this->actionMessage; ?></h4>
+        <?php echo $this->form; ?>
+    </div>
+    <br />
+</div>
