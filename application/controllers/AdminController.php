@@ -2,8 +2,11 @@
 
 class AdminController extends My_Controller_Action
 {
-    protected $_viewData = array();
-    
+    /**
+     * Przed odpaleniem akcji
+     * sprawdzamy czy nie wymaga autoryzacji
+     * @return type 
+     */
     public function preDispatch()
     {
         $auth = Zend_Auth::getInstance();
@@ -15,6 +18,14 @@ class AdminController extends My_Controller_Action
                     'default'
                 );
             }
+        } else {
+            if($auth->hasIdentity()){
+                return $this->_helper->redirector(
+                    'list-cities',
+                    'admin',
+                    'default'
+                );
+            }
         }
         $this->view->identity = $auth->getIdentity();
     }
@@ -22,25 +33,23 @@ class AdminController extends My_Controller_Action
     public function init()
     {
         parent::init();
-        
-        $this->_viewData['url'] = $this->view->url(array(), 'admin_index');
-        $this->_viewData['export'] = array('pdf' => array('label' => 'PDF'));
-        $this->_viewData['filter'] = array('order_year' => array('label' => 'Zamówienia za rok', 'values' => array('2012' => '2012', '2013' => '2013', '2014' => '2014', '2015' => '2015')));
-        $this->_viewData['massactions'] = array('export');
-        $this->_viewData['massactionfield'] = 'id';
-        
-        $this->view->data = $this->_viewData;
     }
     
+    /**
+     * Domyslna akcja 
+     */
     public function indexAction()
     {
         $this->view->title = "Formularz logowania";
         $this->view->form = new Application_Form_Login();
     }
-
+    
+    /**
+     * Akcja bslugi formularza logowania
+     * @return type 
+     */
     public function loginAction()
     {
-        $this->view->title = "Formularz logowania";
         $this->_helper->viewRenderer('index');
         $form = new Application_Form_Login();
         if ($form->isValid($this->getRequest()->getPost())) {
@@ -81,13 +90,12 @@ class AdminController extends My_Controller_Action
             'default'
         );
     }
-
-//    public function indexAction()
-//    {
-//        return $this->_helper->redirector(
-//                        'index', 'home', null, array('order_id' => $id));
-//    }
     
+    /**
+     * Akcja aktualizacji opcji SOAP
+     * @return type
+     * @throws Exception 
+     */
     public function updateOptionsAction()
     {
         $this->view->title = "Edycja ustawień";
@@ -116,6 +124,10 @@ class AdminController extends My_Controller_Action
         }
     }
     
+    /**
+     * Akcja tworzenia miasta
+     * @return type 
+     */
     public function createCityAction()
     {
         $this->view->title = "Tworzenie nowego miasta";
@@ -137,7 +149,13 @@ class AdminController extends My_Controller_Action
         
         $this->view->form = $form;
     }
-
+    
+    /**
+     * Akacja aktualizacja miasta
+     * @return type
+     * @throws Exception
+     * @throws Zend_Controller_Action_Exception 
+     */
     public function updateCityAction()
     {
         $id = $this->getRequest()->getParam('city_id');
@@ -181,7 +199,10 @@ class AdminController extends My_Controller_Action
 
         $this->view->city_id = $id;
     }
-
+    
+    /**
+     * Akcja wylistowania miast 
+     */
     public function listCitiesAction()
     {
         $City = new Application_Model_DbTable_City;
@@ -190,6 +211,12 @@ class AdminController extends My_Controller_Action
         $this->view->cities = $cities;
     }
 
+    /**
+     * Akcja usuwania miasta
+     * @return type
+     * @throws Exception
+     * @throws Zend_Controller_Action_Exception 
+     */
     public function deleteCityAction()
     {
         $id = $this->getRequest()->getParam('city_id');

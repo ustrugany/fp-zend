@@ -288,14 +288,14 @@ a.sort-desc{
 }
 
 
-.weather-info li.odd.first{
+.weather-info .odd.first{
     background-color: black;
     color: #F48A00;
     display: block;
     font-size: 18px;
 }
 
-.weather-info li.odd{
+.odd{
     background-color: silver;
 }
 
@@ -305,4 +305,74 @@ a.sort-desc{
 }
 .weather-info .key{
     font-weight: bold;
+}
+
+#view-content h2{
+    font-size: 16px;
+    padding: 5px 0;
+    font-weight: bold;
+}
+
+.grid-row{
+    padding: 5px;
+    overflow: hidden;
+}
+
+.grid-row div{
+    float: left;
+}
+
+.grid-row .action-column{
+    float: right;
+    padding: 5px;
+    background-color: whitesmoke;
+    border: 1px solid silver;
+    margin-left: 5px;
+}
+
+.grid-row .action-column a{
+    font-size: 12px;
+}
+.action-message{
+    padding: 10px 0;
+    font-weight: bold;
+}
+.flash-messages{
+    font-size: 16px;
+    font-weight: bold;
+    padding-bottom: 20px;
+    text-decoration: underline;
+}
+
+#admin-naviation {
+    padding-bottom: 20px;
+}
+#admin-naviation ul{
+    text-align: center;
+}
+#admin-naviation li{
+    display: inline-block;
+}
+#logout-bar a,
+#admin-naviation li a{
+    display: block;
+    padding: 10px;
+    font-size: 16px;
+    background-color: whitesmoke;
+    border: 1px solid silver;
+}
+
+#logout-bar a{
+    float: right;
+    width: 100px;
+    text-align: center;
+}
+
+#logout-bar{
+    overflow: hidden;
+}
+
+.zend_form .errors{
+    color: red;
+    margin: 10px 0;
 }
