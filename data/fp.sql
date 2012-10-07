@@ -3,7 +3,7 @@
 -- Server version:               5.5.25a - MySQL Community Server (GPL)
 -- Server OS:                    Win32
 -- HeidiSQL version:             7.0.0.4053
--- Date/time:                    2012-10-07 12:13:25
+-- Date/time:                    2012-10-07 12:25:33
 -- --------------------------------------------------------
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -18,7 +18,7 @@ CREATE TABLE IF NOT EXISTS `cities` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2919 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table fp.cities: ~1 555 rows (approximately)
+-- Dumping data for table fp.cities: ~1 639 rows (approximately)
 /*!40000 ALTER TABLE `cities` DISABLE KEYS */;
 INSERT INTO `cities` (`id`, `name`, `country_id`) VALUES
 	(1, 'Częstochowa', 0),
@@ -1395,7 +1395,7 @@ INSERT INTO `cities` (`id`, `name`, `country_id`) VALUES
 	(2716, 'Vernal, Vernal Airport', 712),
 	(2717, 'Rolla / Vichy, Rolla National Airport', 712),
 	(2718, 'Visalia Municipal Automatic Weather Observing / Reporting System', 712),
-	(2719, 'Abingdon', 741),
+	(2719, 'Abingdon', 712),
 	(2720, 'Valdosta Regional', 712),
 	(2721, 'Van Nuys, Van Nuys Airport', 712),
 	(2722, 'Volk / Camp Douglas', 712),
@@ -1605,12 +1605,12 @@ CREATE TABLE IF NOT EXISTS `cities_weathers` (
   `city_id` int(10) DEFAULT '0',
   `insert_time` datetime DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=32 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 -- Dumping data for table fp.cities_weathers: ~1 rows (approximately)
 /*!40000 ALTER TABLE `cities_weathers` DISABLE KEYS */;
 INSERT INTO `cities_weathers` (`id`, `value`, `city_id`, `insert_time`) VALUES
-	(31, '<div class="weather-info">\n        <ul>\n                            <li class="odd first" ><span class="key">Location</span><span class="value">Wroclaw Ii, Poland (EPWR) 51-06N 016-53E 121M</span></li>\n                    <li class="even" ><span class="key">Time</span><span class="value">Oct 06, 2012 - 04:00 PM EDT / 2012.10.06 2000 UTC</span></li>\n                    <li class="odd" ><span class="key">Wind</span><span class="value"> from the WNW (300 degrees) at 17 MPH (15 KT):0</span></li>\n                    <li class="even" ><span class="key">Visibility</span><span class="value"> greater than 7 mile(s):0</span></li>\n                    <li class="odd" ><span class="key">SkyConditions</span><span class="value"> mostly cloudy</span></li>\n                    <li class="even" ><span class="key">Temperature</span><span class="value"> 57 F (14 C)</span></li>\n                    <li class="odd" ><span class="key">DewPoint</span><span class="value"> 51 F (11 C)</span></li>\n                    <li class="even" ><span class="key">RelativeHumidity</span><span class="value"> 82%</span></li>\n                    <li class="odd" ><span class="key">Pressure</span><span class="value"> 29.91 in. Hg (1013 hPa)</span></li>\n                    <li class="even last" ><span class="key">Status</span><span class="value">Success</span></li>\n            </ul>\n    </div>', 1416, '2012-10-06 22:41:24');
+	(32, '<div class="weather-info">\n        <ul>\n                            <li class="odd first" ><span class="key">Location</span><span class="value">Katowice, Poland (EPKT) 50-14N 019-02E 284M</span></li>\n                    <li class="even" ><span class="key">Time</span><span class="value">Oct 07, 2012 - 06:00 AM EDT / 2012.10.07 1000 UTC</span></li>\n                    <li class="odd" ><span class="key">Wind</span><span class="value"> from the NNE (020 degrees) at 6 MPH (5 KT):0</span></li>\n                    <li class="even" ><span class="key">Visibility</span><span class="value"> 3 mile(s):0</span></li>\n                    <li class="odd" ><span class="key">SkyConditions</span><span class="value"> overcast</span></li>\n                    <li class="even" ><span class="key">Temperature</span><span class="value"> 46 F (8 C)</span></li>\n                    <li class="odd" ><span class="key">DewPoint</span><span class="value"> 46 F (8 C)</span></li>\n                    <li class="even" ><span class="key">RelativeHumidity</span><span class="value"> 100%</span></li>\n                    <li class="odd" ><span class="key">Pressure</span><span class="value"> 29.88 in. Hg (1012 hPa)</span></li>\n                    <li class="even last" ><span class="key">Status</span><span class="value">Success</span></li>\n            </ul>\n    </div>', 1411, '2012-10-07 12:24:56');
 /*!40000 ALTER TABLE `cities_weathers` ENABLE KEYS */;
 
 
@@ -1872,7 +1872,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Dumping data for table fp.user: ~0 rows (approximately)
+-- Dumping data for table fp.user: ~1 rows (approximately)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 	(1, 'admin', 'admin');
