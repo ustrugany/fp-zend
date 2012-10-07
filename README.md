@@ -3,7 +3,7 @@ Rozwiazanie zadania "Weather Info"
 
 Uwagi:
 -------------
--dostęp do części administracyjnej:
+- dostęp do części administracyjnej:
 	- login: admin 
 	- haslo: admin
 - baza danych 
