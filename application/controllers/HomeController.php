@@ -13,30 +13,8 @@ class HomeController extends My_Controller_Action
     public function indexAction()
     {
         $this->fetchAndPassCountries();
-//        $countryName = $this->getRequest()->get('country', null);
-//        $cityName = $this->getRequest()->get('city', null);
-//        if(!is_null($countryName)){
-//            $cities = $this->getCitiesByCountryName($countryName);
-//            $this->view->cities = $cities;
-//            if(!is_null($cityName)){
-//                $cityWeather = $this->getCityWeatherWithSOAP($cityName, $countryName);
-//                $this->view->weather = $cityWeather;
-//            }
-//        } else {
-//            $this->_flashMessenger->setNamespace('info')->addMessage('Wybierz kraj');
-//        }
-//        $this->getAPICities('Germany');
-//        $this->getAPIWeather('Berlin', 'Germany');
-//        $logger = Zend_Registry::get('logger');
-//        $logger->warn('Testowe ostrzeżenie loggera');
-//        $logger->info('Testowe info loggera');
-//        $logger->err('Testowy błąd loggera');
     }
-    
-//    protected function getCountryCitiesCacheKey($countryName)
-//    {
-//        return "cached_cities_for_{$countryName}_country";
-//    }
+
 
     /**
      * Pobiera miasta z bazy danych w danym porzadku i przekazuje do widoku
